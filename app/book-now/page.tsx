@@ -8,7 +8,20 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
 const BookNow = () => {
-    const [car, setCar] = useState(null);
+    const [car, setCar] = useState({
+        city_mpg: 0,
+        class: '',
+        combination_mpg: 0,
+        cylinders: 0,
+        displacement: 0,
+        drive: '',
+        fuel_type: '',
+        highway_mpg: 0,
+        make: '',
+        model: '',
+        transmission: '',
+        year: 2022
+    });
     const [carRent,setCarRent] = useState("");
     const [showScreen, setshowScreen] = useState(false)
     const getCarDetails = () => {
@@ -34,7 +47,7 @@ const BookNow = () => {
     //     console.log("from",formData);
     // }
       
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         console.log(e);
         const { name, value } = e.target;
         setFormData({
@@ -62,7 +75,7 @@ const BookNow = () => {
       };
       //handle submit 
 
-      const confirmFn = async (e:any) => {
+      const confirmFn = async () => {
         // Here you can perform actions with the form data, for example:
         console.log('Form submitted with data:', formData);
         const baseUrl = "https://carhub-backend-gqjz.onrender.com";
