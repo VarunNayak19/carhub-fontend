@@ -12,7 +12,7 @@ const BookNow = () => {
     const [carRent,setCarRent] = useState("");
     const [showScreen, setshowScreen] = useState(false)
     const getCarDetails = () => {
-        const car = JSON.parse(localStorage.getItem('car') || {});
+        const car = JSON.parse(localStorage.getItem('car') || "");
         const carRent = JSON.parse(localStorage.getItem('car-price') || "");
         console.log(car);
         setCar(car);
