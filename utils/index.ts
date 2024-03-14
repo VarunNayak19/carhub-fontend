@@ -176,11 +176,13 @@ export const calculateCarRent = (city_mpg: number, year: number, drive: string, 
         }
     ];
 
-    let brandPay: number;
+    let brandPay = 0;
 
-    carBrandPricesINR.map((item: any) => (
-        item.brand.toLowerCase().includes(make.toLowerCase()) ? brandPay = item.price : 3000
-    ))
+    carBrandPricesINR.forEach((item: any) => {
+        if (item.brand.toLowerCase().includes(make.toLowerCase())) {
+            brandPay = item.price;
+        }
+    });
 
     // Calculate additional rate based on mileage and age
     const mileageRate = city_mpg * mileageFactor;
