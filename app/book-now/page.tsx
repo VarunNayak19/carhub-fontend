@@ -78,7 +78,7 @@ const BookNow = () => {
       const confirmFn = async () => {
         // Here you can perform actions with the form data, for example:
         console.log('Form submitted with data:', formData);
-        const baseUrl = "https://carhub-service.onrender.com";
+        const baseUrl = "https://car-backend-w9bx.onrender.com";
         try {
             const response = await axios.post(`${baseUrl}/send-email`, {...formData,car:car,carRent:carRent});
             console.log('Form submitted:', response.data);
