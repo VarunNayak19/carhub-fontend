@@ -32,6 +32,7 @@ const BookNow = () => {
         setCarRent(carRent);
     }
     useEffect(() => {
+        window.scrollTo(0, 0);
         getCarDetails();
         setshowScreen(true);
     }, [])
@@ -76,6 +77,7 @@ const BookNow = () => {
       //handle submit 
 
       const confirmFn = async () => {
+        setLoading(true);
         // Here you can perform actions with the form data, for example:
         console.log('Form submitted with data:', formData);
         const baseUrl = "https://car-backend-w9bx.onrender.com";
@@ -90,6 +92,7 @@ const BookNow = () => {
             email: '',
             mobile: '',
           });
+          setLoading(false);
           toast('Booking Confirmed!', {
             icon: '✅',
             id: "Booking Confirmed"
@@ -108,6 +111,8 @@ const BookNow = () => {
           }
       };
 
+      const [loading, setLoading] = useState(false);
+      const currentDate = new Date().toISOString().split('T')[0];
 
   return (
     <>
@@ -138,7 +143,7 @@ const BookNow = () => {
                         </div>
                         <div className='w-full mt-5'>
                             <label className='text-sm text-gray-400'>Date</label>
-                            <input onChange={handleChange} name="date" value={formData.date} required placeholder='Date' type="date" id="date" className='w-full  mt-2 h-8 px-3 py-5 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500' />
+                            <input onChange={handleChange} min={currentDate} name="date" value={formData.date} required placeholder='Date' type="date" id="date" className='w-full  mt-2 h-8 px-3 py-5 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:border-blue-500' />
                         </div>
                         <div className='w-full mt-6'>
                             <CustomButton
@@ -172,6 +177,13 @@ const BookNow = () => {
              </div>
         </div>
         }
+              {loading && (
+        <div className="fixed p-5 top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <div className=" max-w-md w-full h-28 px-4 py-6 rounded-2xl bg-white flex justify-center items-center">
+            <div className=' text-black font-semibold w-1/2 text-xl text-center '>Waiting for your booking confirmation</div>
+          </div>
+        </div>
+      )}
         <Footer />
         <TailwindToaster />
     </>

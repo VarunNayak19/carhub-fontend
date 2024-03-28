@@ -3,13 +3,13 @@ import React from 'react'
 import { CustomButton } from '.'
 import Image from 'next/image';
 const Hero = () => {
-    const handleScroll = () => {
-        window.scrollTo({
-            top: window.document.getElementById("#discover")?.getBoundingClientRect().top,
-            behavior: "smooth"
-        })
+    // const handleScroll = () => {
+    //     window.scrollTo({
+    //         top: window.document.getElementById("#discover")?.getBoundingClientRect().top,
+    //         behavior: "smooth"
+    //     })
 
-    }
+    // }
     return (
         <div className='hero' >
             <div className="flex-1 pt-36 padding-x">
@@ -19,11 +19,12 @@ const Hero = () => {
                 <p className="hero__subtitle">
                     Streamline your car rental experience with our effortless booking process.
                 </p>
+                {/* <a href="#content">
                 <CustomButton
                     title="Explore Cars"
                     containerStyles="bg-primary-blue text-white rounded-full mt-10"
-                    handleClick={handleScroll}
                 />
+                </a> */}
             </div>
             <div className="hero__image-container">
                 <div className="hero__image">
